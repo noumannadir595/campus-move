@@ -89,6 +89,7 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
+      cursor: pointer;
     }
     .btn-download:hover {
       transform: scale(1.02);
@@ -270,34 +271,22 @@
   </footer>
 
   <script>
-    // Simulated APK download (trigger a dummy .apk file)
+    // REAL APK DOWNLOAD FUNCTION - direct file from /apk/campus_move.apk
     function triggerDownload() {
-      // Create a small text blob, file named "Campus_Move_v1.0.apk" to simulate download
-      const content = `Campus Move APK 
-      App version: 1.0
-      Features included:
-      - Student & faculty login
-      - Apply for transport
-      - Admin approval & fee challan
-      - Digital transport card with QR
-      - Emergency contacts
-      - Feedback system
-      - Bus routes & timings
-      Developed by Nouman Nadir
-      For actual release, contact developer.`;
-      const blob = new Blob([content], { type: 'application/vnd.android.package-archive' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'Campus_Move_v1.0.apk';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      // Link to your APK file inside the 'apk' folder
+      const apkPath = '/apk/campus_move.apk';
       
-      // optional toast notification
+      // Create an anchor element and trigger download
+      const link = document.createElement('a');
+      link.href = apkPath;
+      link.setAttribute('download', 'Campus_Move_v2.0.apk');  // suggested filename
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Optional toast message
       const toast = document.createElement('div');
-      toast.innerText = '✅ Download started! Campus_Move_v1.0.apk (demo)';
+      toast.innerText = '✅ Download started! Your APK is being downloaded.';
       toast.style.position = 'fixed';
       toast.style.bottom = '24px';
       toast.style.left = '24px';
@@ -311,20 +300,24 @@
       toast.style.border = '1px solid #2d3a5e';
       toast.style.fontSize = '0.9rem';
       document.body.appendChild(toast);
-      setTimeout(() => toast.remove(), 2800);
+      setTimeout(() => toast.remove(), 3000);
     }
 
-    // Attach to both download buttons
+    // Attach event listeners to both download buttons
     const btn1 = document.getElementById('mainDownloadBtn');
     const btn2 = document.getElementById('downloadBtn2');
-    if (btn1) btn1.addEventListener('click', (e) => {
-      e.preventDefault();
-      triggerDownload();
-    });
-    if (btn2) btn2.addEventListener('click', (e) => {
-      e.preventDefault();
-      triggerDownload();
-    });
+    if (btn1) {
+      btn1.addEventListener('click', (e) => {
+        e.preventDefault();
+        triggerDownload();
+      });
+    }
+    if (btn2) {
+      btn2.addEventListener('click', (e) => {
+        e.preventDefault();
+        triggerDownload();
+      });
+    }
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
