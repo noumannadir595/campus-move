@@ -577,7 +577,7 @@ class _LostFoundScreenState extends State<LostFoundScreen> {
                   ),
                   const SizedBox(height: 12),
                   DropdownButtonFormField<String>(
-                    value: _selectedType,
+                    initialValue: _selectedType,
                     items: const [
                       DropdownMenuItem(value: 'Lost', child: Text('Lost')),
                       DropdownMenuItem(value: 'Found', child: Text('Found')),
@@ -1623,7 +1623,7 @@ class _DriverQRGeneratorScreenState extends State<DriverQRGeneratorScreen> {
         child: Column(
           children: [
             DropdownButtonFormField<String>(
-              value: _selectedRoute.isEmpty ? null : _selectedRoute,
+              initialValue: _selectedRoute.isEmpty ? null : _selectedRoute,
               hint: const Text('Select Route'),
               items: _routes.map((r) => DropdownMenuItem(value: r, child: Text(r))).toList(),
               onChanged: (v) => setState(() => _selectedRoute = v!),
@@ -2866,7 +2866,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     TextField(controller: _departmentController, decoration: _inputDecoration('Department', Icons.business)),
                     const SizedBox(height: 12),
                     DropdownButtonFormField<String>(
-                      value: _userType,
+                      initialValue: _userType,
                       items: const [
                         DropdownMenuItem(value: 'student', child: Text('Student')),
                         DropdownMenuItem(value: 'faculty', child: Text('Faculty')),
@@ -3174,7 +3174,7 @@ class _ApplyTransportScreenState extends State<ApplyTransportScreen> {
                   ),
                   const SizedBox(height: 12),
                   DropdownButtonFormField<String>(
-                    value: _selectedRoute.isEmpty ? null : _selectedRoute,
+                    initialValue: _selectedRoute.isEmpty ? null : _selectedRoute,
                     hint: const Text('Select Route'),
                     items: _routesList.map((r) => DropdownMenuItem(value: r, child: Text(r))).toList(),
                     onChanged: (v) => setState(() => _selectedRoute = v!),
